@@ -52,13 +52,13 @@
           "__format": "json"
         }
       },
-      "litecoin": {
+      "actinium": {
         "testnet": {
-          "__name": "NEUTRINO_LITECOIN_TESTNET",
+          "__name": "NEUTRINO_ACTINIUM_TESTNET",
           "__format": "json"
         },
         "mainnet": {
-          "__name": "NEUTRINO_LITECOIN_MAINNET",
+          "__name": "NEUTRINO_ACTINIUM_MAINNET",
           "__format": "json"
         }
       }
@@ -67,7 +67,7 @@
 
   "units": {
     "bitcoin": "UNITS_BITCOIN",
-    "litecoin": "UNITS_LITECOIN"
+    "actinium": "UNITS_ACTINIUM"
   },
 
   "invoices": {

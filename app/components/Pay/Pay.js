@@ -65,7 +65,7 @@ const ShowHideAmount = Keyframes.Spring({
 class Pay extends React.Component {
   static propTypes = {
     chain: PropTypes.string.isRequired,
-    /** The currently active chain (bitcoin, litecoin etc) */
+    /** The currently active chain (bitcoin, actinium etc) */
     changeFilter: PropTypes.func.isRequired,
     /** The currently active chain (mainnet, testnet) */
     channelBalance: PropTypes.number.isRequired,

@@ -100,20 +100,20 @@ export const fetchBlockHeight = (chain, network) => {
         },
       ],
     },
-    litecoin: {
+    actinium: {
       mainnet: [
         {
-          baseUrl: `https://chain.so/api/v2/get_info/LTC`,
+          baseUrl: `https://chain.so/api/v2/get_info/ACM`,
           path: 'data.blocks',
         },
         {
-          baseUrl: `https://api.blockcypher.com/v1/ltc/main`,
+          baseUrl: `https://api.blockcypher.com/v1/acm/main`,
           path: 'height',
         },
       ],
       testnet: [
         {
-          baseUrl: `https://chain.so/api/v2/get_info/LTCTEST`,
+          baseUrl: `https://chain.so/api/v2/get_info/ACMTEST`,
           path: 'data.blocks',
         },
       ],

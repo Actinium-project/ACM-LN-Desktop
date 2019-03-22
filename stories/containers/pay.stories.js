@@ -67,8 +67,8 @@ storiesOf('Containers.Pay', module)
       {
         'Bitcoin mainnet': 'bitcoin',
         'Bitcoin testnet': 'testnet',
-        'Litecoin mainnet': 'litecoin',
-        'Litecoin testnet': 'litecoin_testnet',
+        'Actinium mainnet': 'actinium',
+        'Actinium testnet': 'actinium_testnet',
       },
       'bitcoin'
     )
@@ -84,7 +84,7 @@ storiesOf('Containers.Pay', module)
     const memo = text('Memo')
     const payReq = hasInvoicePreset ? mockCreateInvoice(coinType, amount, unit, memo) : null
 
-    const chain = ['bitcoin', 'testnet'].includes(coinType) ? 'bitcoin' : 'litecoin'
+    const chain = ['bitcoin', 'testnet'].includes(coinType) ? 'bitcoin' : 'actinium'
     const network = ['bitcoin', 'testnet'].includes(coinType) ? 'mainnet' : 'testnet'
 
     const state = store.getState()

@@ -878,7 +878,7 @@ const initialState = {
   //   pubkey: "02212d3ec887188b284dbb7b2e6eb40629a6e14fb049673f22d2a0aa05f902090e",
   //   host: "testnet-lnd.yalls.org",
   //   nickname: "Yalls",
-  //   description: "Top up prepaid mobile phones with bitcoin and altcoins in USA and around the world"
+  //   description: "Top up prepaid mobile phones with bitcoin and aacmoins in USA and around the world"
   // }
   // ****
   suggestedNodes: {

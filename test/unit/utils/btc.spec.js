@@ -156,14 +156,14 @@ describe('btc.bitsToFiat', () => {
 })
 
 describe('btc.convert', () => {
-  describe('from btc or ltc', () => {
+  describe('from btc or acm', () => {
     describe('to bits or phots', () => {
       it('should return 1 when 0.00000100 is passed in', () => {
         expect(convert('btc', 'bits', 0.000001)).toEqual(1)
         expect(convert('btc', 'phots', 0.000001)).toEqual(1)
 
-        expect(convert('ltc', 'bits', 0.000001)).toEqual(1)
-        expect(convert('ltc', 'phots', 0.000001)).toEqual(1)
+        expect(convert('acm', 'bits', 0.000001)).toEqual(1)
+        expect(convert('acm', 'phots', 0.000001)).toEqual(1)
       })
     })
 
@@ -172,8 +172,8 @@ describe('btc.convert', () => {
         expect(convert('btc', 'sats', 0.00000123)).toEqual(123)
         expect(convert('btc', 'lits', 0.00000123)).toEqual(123)
 
-        expect(convert('ltc', 'sats', 0.00000123)).toEqual(123)
-        expect(convert('ltc', 'lits', 0.00000123)).toEqual(123)
+        expect(convert('acm', 'sats', 0.00000123)).toEqual(123)
+        expect(convert('acm', 'lits', 0.00000123)).toEqual(123)
       })
     })
 
@@ -182,47 +182,47 @@ describe('btc.convert', () => {
         expect(convert('btc', 'msats', 0.00000123)).toEqual(123000)
         expect(convert('btc', 'mlits', 0.00000123)).toEqual(123000)
 
-        expect(convert('ltc', 'msats', 0.00000123)).toEqual(123000)
-        expect(convert('ltc', 'mlits', 0.00000123)).toEqual(123000)
+        expect(convert('acm', 'msats', 0.00000123)).toEqual(123000)
+        expect(convert('acm', 'mlits', 0.00000123)).toEqual(123000)
       })
     })
 
-    describe('to btc or ltc', () => {
+    describe('to btc or acm', () => {
       it('should return 1 when 1 is passed in', () => {
         expect(convert('btc', 'btc', 1)).toEqual(1)
-        expect(convert('btc', 'ltc', 1)).toEqual(1)
+        expect(convert('btc', 'acm', 1)).toEqual(1)
 
-        expect(convert('ltc', 'btc', 1)).toEqual(1)
-        expect(convert('ltc', 'ltc', 1)).toEqual(1)
+        expect(convert('acm', 'btc', 1)).toEqual(1)
+        expect(convert('acm', 'acm', 1)).toEqual(1)
       })
     })
 
     describe('to fiat', () => {
-      it('should return 200.90 when 1 btc or ltc is passed in at the price of 100.45', () => {
+      it('should return 200.90 when 1 btc or acm is passed in at the price of 100.45', () => {
         expect(convert('btc', 'fiat', 2, 100.45)).toEqual(200.9)
         expect(convert('btc', 'fiat', 2, 100.45)).toEqual(200.9)
 
-        expect(convert('ltc', 'fiat', 2, 100.45)).toEqual(200.9)
-        expect(convert('ltc', 'fiat', 2, 100.45)).toEqual(200.9)
+        expect(convert('acm', 'fiat', 2, 100.45)).toEqual(200.9)
+        expect(convert('acm', 'fiat', 2, 100.45)).toEqual(200.9)
       })
     })
 
     describe('to an unknown denomination', () => {
       it('should not fall through', () => {
         expect(convert('btc', 'lolkek', 2, 100.45)).toEqual(undefined)
-        expect(convert('ltc', 'lolkek', 2, 100.45)).toEqual(undefined)
+        expect(convert('acm', 'lolkek', 2, 100.45)).toEqual(undefined)
       })
     })
   })
 
   describe('from bits or phots', () => {
-    describe('to btc or ltc', () => {
+    describe('to btc or acm', () => {
       it('should return 0.00000100 when 1 is passed in', () => {
         expect(convert('bits', 'btc', 1)).toEqual(0.000001)
-        expect(convert('bits', 'ltc', 1)).toEqual(0.000001)
+        expect(convert('bits', 'acm', 1)).toEqual(0.000001)
 
         expect(convert('phots', 'btc', 1)).toEqual(0.000001)
-        expect(convert('phots', 'ltc', 1)).toEqual(0.000001)
+        expect(convert('phots', 'acm', 1)).toEqual(0.000001)
       })
     })
 
@@ -272,13 +272,13 @@ describe('btc.convert', () => {
   })
 
   describe('from sats or lits', () => {
-    describe('to btc or ltc', () => {
+    describe('to btc or acm', () => {
       it('should return 0.00000001 when 1 sat or lit is passed in', () => {
         expect(convert('sats', 'btc', 1)).toEqual(0.00000001)
-        expect(convert('sats', 'ltc', 1)).toEqual(0.00000001)
+        expect(convert('sats', 'acm', 1)).toEqual(0.00000001)
 
         expect(convert('lits', 'btc', 1)).toEqual(0.00000001)
-        expect(convert('lits', 'ltc', 1)).toEqual(0.00000001)
+        expect(convert('lits', 'acm', 1)).toEqual(0.00000001)
       })
     })
 
@@ -328,13 +328,13 @@ describe('btc.convert', () => {
   })
 
   describe('from msats or mlits', () => {
-    describe('to btc or ltc', () => {
+    describe('to btc or acm', () => {
       it('should return 0.00000001 when 1,000 msats or mlits are passed in', () => {
         expect(convert('msats', 'btc', 1000)).toEqual(0.00000001)
-        expect(convert('msats', 'ltc', 1000)).toEqual(0.00000001)
+        expect(convert('msats', 'acm', 1000)).toEqual(0.00000001)
 
         expect(convert('mlits', 'btc', 1000)).toEqual(0.00000001)
-        expect(convert('mlits', 'ltc', 1000)).toEqual(0.00000001)
+        expect(convert('mlits', 'acm', 1000)).toEqual(0.00000001)
       })
     })
 
@@ -384,10 +384,10 @@ describe('btc.convert', () => {
   })
 
   describe('from fiat', () => {
-    describe('to btc or ltc', () => {
+    describe('to btc or acm', () => {
       it('should return 0.01 at the price of 100', () => {
         expect(convert('fiat', 'btc', 1, 100)).toEqual(0.01)
-        expect(convert('fiat', 'ltc', 1, 100)).toEqual(0.01)
+        expect(convert('fiat', 'acm', 1, 100)).toEqual(0.01)
       })
     })
 

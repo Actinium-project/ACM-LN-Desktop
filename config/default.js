@@ -11,21 +11,21 @@ module.exports = {
 
   // Database settings.
   db: {
-    namespace: 'ZapDesktop',
+    namespace: 'AcmLnDesktop',
     domain: isStableVersion(getPackageDetails().version, STABLE_VERSION) ? null : 'next',
   },
 
   // Supported chains.
-  chains: ['bitcoin', 'litecoin'],
+  chains: ['bitcoin', 'actinium'],
 
   // Supported networks.
   networks: ['testnet', 'mainnet'],
 
   // Default chain for new wallets.
-  chain: 'bitcoin',
+  chain: 'actinium',
 
   // Default network for new wallets.
-  network: 'testnet',
+  network: 'mainnet',
 
   // Default settings for lnd.
   lnd: {
@@ -62,7 +62,7 @@ module.exports = {
         testnet: ['testnet3-btcd.zaphq.io', 'testnet4-btcd.zaphq.io'],
         mainnet: ['mainnet1-btcd.zaphq.io', 'mainnet2-btcd.zaphq.io'],
       },
-      litecoin: {
+      actinium: {
         testnet: [],
         mainnet: [],
       },
@@ -72,7 +72,7 @@ module.exports = {
   // Default curreny units.
   units: {
     bitcoin: 'sats',
-    litecoin: 'lits',
+    actinium: 'sats',
   },
 
   // Default invoice settings

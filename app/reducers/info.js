@@ -29,19 +29,19 @@ const networkInfo = {
       unitPrefix: 't',
     },
   },
-  litecoin: {
+  actinium: {
     mainnet: {
       id: 'mainnet',
       name: 'Mainnet',
       explorerUrl: 'https://insight.litecore.io',
-      bitcoinJsNetwork: networks.litecoin.mainnet,
+      bitcoinJsNetwork: networks.actinium.mainnet,
       unitPrefix: '',
     },
     testnet: {
       id: 'testnet',
       name: 'Testnet',
       explorerUrl: 'https://testnet.litecore.io',
-      bitcoinJsNetwork: networks.litecoin.testnet,
+      bitcoinJsNetwork: networks.actinium.testnet,
       unitPrefix: 't',
     },
   },

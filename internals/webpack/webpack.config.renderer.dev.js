@@ -108,6 +108,8 @@ export default merge.smart(baseConfig, {
         'http://localhost:*',
         'ws://localhost:*',
         'https://api.coinbase.com/',
+        'https://api.actinium.org/',
+        'https://*.actinium.org/',
         'https://bitcoinfees.earn.com',
         'https://zap.jackmallers.com',
       ],

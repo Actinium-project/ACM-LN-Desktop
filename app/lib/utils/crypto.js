@@ -1,5 +1,5 @@
 import get from 'lodash.get'
-import bitcoin from 'bitcoinjs-lib'
+import acmlib from 'acmjs-lib'
 import lightningRequestReq from 'bolt11'
 import coininfo from 'coininfo'
 
@@ -9,9 +9,9 @@ export const networks = {
     testnet: coininfo.bitcoin.test.toBitcoinJS(),
     regtest: coininfo.bitcoin.regtest.toBitcoinJS(),
   },
-  litecoin: {
-    mainnet: coininfo.litecoin.main.toBitcoinJS(),
-    testnet: coininfo.litecoin.test.toBitcoinJS(),
+  actinium: {
+    mainnet: coininfo.actinium.main.toBitcoinJS(),
+    testnet: coininfo.actinium.test.toBitcoinJS(),
   },
 }
 
@@ -21,9 +21,9 @@ export const coinTypes = {
     testnet: 'testnet',
     regtest: 'regtest',
   },
-  litecoin: {
-    mainnet: 'litecoin',
-    testnet: 'litecoin_testnet',
+  actinium: {
+    mainnet: 'actinium',
+    testnet: 'actinium_testnet',
   },
 }
 
@@ -104,7 +104,7 @@ export const isOnchain = (input, chain, network) => {
   }
 
   try {
-    bitcoin.address.toOutputScript(input, networks[chain][network])
+    acmlib.address.toOutputScript(input, networks[chain][network])
     return true
   } catch (e) {
     return false
@@ -114,11 +114,11 @@ export const isOnchain = (input, chain, network) => {
 /**
  * Test to see if a string is a valid lightning address.
  * @param {String} input string to check.
- * @param {String} [network='bitcoin'] chain to check (bitcoin, litecoin).
+ * @param {String} [network='actinium'] chain to check (bitcoin, actinium).
  * @param {String} [network='mainnet'] network to check (mainnet, testnet, regtest).
  * @return {Boolean} boolean indicating wether the address is a lightning address.
  */
-export const isLn = (input, chain = 'bitcoin', network = 'mainnet') => {
+export const isLn = (input, chain = 'actinium', network = 'mainnet') => {
   if (!input || typeof input !== 'string') {
     return false
   }

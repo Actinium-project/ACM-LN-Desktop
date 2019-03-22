@@ -43,7 +43,7 @@ describe('LndConfig', function() {
       beforeAll(() => {
         this.wallet = 'wallet-1'
         this.type = 'local'
-        this.chain = 'litecoin'
+        this.chain = 'actinium'
         this.network = 'mainnet'
 
         this.lndConfig = new LndConfig({

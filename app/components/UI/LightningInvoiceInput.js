@@ -22,7 +22,7 @@ class LightningInvoiceInput extends React.Component {
   static displayName = 'LightningInvoiceInput'
 
   static propTypes = {
-    chain: PropTypes.oneOf(['bitcoin', 'litecoin']),
+    chain: PropTypes.oneOf(['bitcoin', 'actinium']),
     intl: intlShape.isRequired,
     isRequired: PropTypes.bool,
     network: PropTypes.oneOf(['mainnet', 'testnet', 'regtest']),

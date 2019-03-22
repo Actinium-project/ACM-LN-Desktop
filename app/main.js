@@ -66,7 +66,7 @@ const handleOpenUrl = (urlToOpen = '') => {
     const type = urlToOpen.split(':')[0]
 
     switch (type) {
-      case 'bitcoin':
+      case 'actinium':
         handleBitcoinLink(urlToOpen)
         break
 
@@ -407,10 +407,10 @@ app.on('ready', async () => {
 
 /**
  * Add application event listeners:
- *  - lightning: Open zap payment form when bitcoin url is opened
+ *  - lightning: Open zap payment form when actinium url is opened
  *  - lightning: Open zap payment form when lightning url is opened
  *  - lndconnect: Populate onboarding connection details form when lndconnect url is opened
  */
-app.setAsDefaultProtocolClient('bitcoin')
+app.setAsDefaultProtocolClient('actinium')
 app.setAsDefaultProtocolClient('lightning')
 app.setAsDefaultProtocolClient('lndconnect')

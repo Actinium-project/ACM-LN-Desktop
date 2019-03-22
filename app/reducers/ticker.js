@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import get from 'lodash.get'
 import { requestTickers } from 'lib/utils/api'
-import { currencies, getDefaultCurrency } from 'lib/i18n'
+import { getDefaultCurrency } from 'lib/i18n'
 import { infoSelectors } from './info'
 import { putSetting } from './settings'
 
@@ -17,13 +17,13 @@ export const RECIEVE_TICKERS = 'RECIEVE_TICKERS'
 // Map for crypto codes to crypto tickers
 const DEFAULT_CRYPTO_UNITS = {
   bitcoin: CONFIG.units.bitcoin,
-  litecoin: CONFIG.units.litecoin,
+  actinium: CONFIG.units.actinium,
 }
 
 // Map for crypto names to crypto tickers
 const CRYPTO_NAMES = {
   bitcoin: 'Bitcoin',
-  litecoin: 'Litecoin',
+  actinium: 'Actinium',
 }
 
 // ------------------------------------
@@ -83,17 +83,17 @@ export function getTickers() {
   }
 }
 
-export function recieveTickers({ btcTicker, ltcTicker }) {
+export function recieveTickers({ btcTicker, acmTicker }) {
   return {
     type: RECIEVE_TICKERS,
     btcTicker,
-    ltcTicker,
+    acmTicker,
   }
 }
 
 export const fetchTickers = () => async dispatch => {
   dispatch(getTickers())
-  const tickers = await requestTickers(['btc', 'ltc'])
+  const tickers = await requestTickers(['btc', 'acm'])
   dispatch(recieveTickers(tickers))
 
   return tickers
@@ -120,11 +120,11 @@ const ACTION_HANDLERS = {
   [SET_CRYPTO]: (state, { crypto }) => ({ ...state, crypto }),
   [SET_FIAT_TICKER]: (state, { fiatTicker }) => ({ ...state, fiatTicker }),
   [GET_TICKERS]: state => ({ ...state, tickerLoading: true }),
-  [RECIEVE_TICKERS]: (state, { btcTicker, ltcTicker }) => ({
+  [RECIEVE_TICKERS]: (state, { btcTicker, acmTicker }) => ({
     ...state,
     tickerLoading: false,
     btcTicker,
-    ltcTicker,
+    acmTicker,
   }),
 }
 
@@ -134,7 +134,7 @@ const cryptoSelector = state => state.ticker.crypto
 const currencySelector = state => state.ticker.currency
 const currencyFiltersSelector = state => state.ticker.currencyFilters
 const bitcoinTickerSelector = state => state.ticker.btcTicker
-const litecoinTickerSelector = state => state.ticker.ltcTicker
+const actiniumTickerSelector = state => state.ticker.acmTicker
 const fiatTickerSelector = state => state.ticker.fiatTicker
 const tickerLoadingSelector = state => state.ticker.tickerLoading
 
@@ -144,13 +144,13 @@ tickerSelectors.tickerLoading = tickerLoadingSelector
 tickerSelectors.currentTicker = createSelector(
   cryptoSelector,
   bitcoinTickerSelector,
-  litecoinTickerSelector,
-  (crypto, btcTicker, ltcTicker) => {
+  actiniumTickerSelector,
+  (crypto, btcTicker, acmTicker) => {
     switch (crypto) {
       case 'bitcoin':
         return btcTicker
-      case 'litecoin':
-        return ltcTicker
+      case 'actinium':
+        return acmTicker
       default:
         return null
     }
@@ -182,7 +182,7 @@ tickerSelectors.currencyAddressName = createSelector(
   cryptoSelector,
   tickerSelectors.currencyFilters,
   (crypto, currencyFilters = []) => {
-    // assume first entry is as a currency ticker name (e.g BTC, LTC etc)
+    // assume first entry is as a currency ticker name (e.g BTC, ACM etc)
     const [selectedCurrency] = currencyFilters
     if (selectedCurrency) {
       return selectedCurrency.name
@@ -216,9 +216,9 @@ const initialState = {
   fromCurrency: null,
   crypto: null,
   btcTicker: null,
-  ltcTicker: null,
+  acmTicker: null,
   fiatTicker: getDefaultCurrency(),
-  fiatTickers: currencies,
+  fiatTickers: ['USD', 'EUR', 'GBP'],
   currencyFilters: {
     bitcoin: [
       {
@@ -234,18 +234,18 @@ const initialState = {
         name: 'satoshis',
       },
     ],
-    litecoin: [
+    actinium: [
       {
-        key: 'ltc',
-        name: 'LTC',
+        key: 'acm',
+        name: 'ACM',
       },
       {
-        key: 'phots',
-        name: 'photons',
+        key: 'atoms',
+        name: 'atoms',
       },
       {
-        key: 'lits',
-        name: 'litoshis',
+        key: 'sats',
+        name: 'satoshis',
       },
     ],
   },

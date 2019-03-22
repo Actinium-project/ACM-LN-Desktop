@@ -14,18 +14,18 @@ const scheme =
   (process && process.env.HOT) || (window.env && window.env.HOT) ? '/proxy/' : 'https://'
 
 export function requestTicker(id) {
-  const BASE_URL = `${scheme}api.coinbase.com/v2/exchange-rates?currency=${id}`
+  const BASE_URL = `https://api.actinium.org/v1/${id}/fiatprice`
   return axios({
     method: 'get',
     url: BASE_URL,
-  }).then(response => response.data)
+  }).then(response => response)
 }
 
 export function requestTickers(ids) {
   return axios.all(ids.map(id => requestTicker(id))).then(
-    axios.spread((btcTicker, ltcTicker) => ({
-      btcTicker: btcTicker.data.rates,
-      ltcTicker: ltcTicker.data.rates,
+    axios.spread((btcTicker, acmTicker) => ({
+      btcTicker: btcTicker,
+      acmTicker: acmTicker,
     }))
   )
 }
